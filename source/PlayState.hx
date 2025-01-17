@@ -142,6 +142,10 @@ class PlayState extends FlxState {
 		// Add entities to map. **This should be called after creating and adding each entity!**
 		map.loadEntities(placeEntities, "entities");
 
+		// Reset the dot goal and count.
+		dotCount = 0;
+		dotGoal = dots.length + bigDots.length;
+
 		// Reset the ghosts.
 		resetGhost(blinky);
 		resetGhost(pinky);
@@ -197,44 +201,7 @@ class PlayState extends FlxState {
 			FlxG.overlap(player, bigDots, playerTouchBigDot);
 
 			// Manage fruit.
-			if (dotCount ==  70) {
-				// Create fruit.
-				fruit.unhide();
-				add(fruit);
-				fruit.x = 216;
-				fruit.y = 320;
-
-				if (stage == 1) {
-					fruit.setFruit(Constants.FruitOption.CHERRY);
-				} else if (stage == 2) {
-					fruit.setFruit(Constants.FruitOption.STRAWBERRY);
-				} else if (stage == 3) {
-					fruit.setFruit(Constants.FruitOption.ORANGE);
-				} else if (stage == 4) {
-					fruit.setFruit(Constants.FruitOption.APPLE);
-				} else if (stage == 5) {
-					fruit.setFruit(Constants.FruitOption.MELON);
-				} else if (stage == 6) {
-					fruit.setFruit(Constants.FruitOption.GALAXIAN);
-				} else if (stage == 7) {
-					fruit.setFruit(Constants.FruitOption.BELL);
-				} else {
-					fruit.setFruit(Constants.FruitOption.KEY);
-				}
-			} else if (dotCount == 170 || fruitTime >= 1000) {
-				// Remove fruit.
-				resetFruit();
-			}
-
-			// Fruit timer.
-			if (fruit.alive) {
-				fruitTime += Std.int(elapsed * 60);
-			}
-
-			// Check if player is touching fruit.
-			if(FlxG.overlap(player, fruit)) {
-				playerTouchFruit();
-			}
+			manageFruit(elapsed);
 
 			// Give player an extra life.
 			if (extraLifeScore >= Constants.EXTRA_LIFE_SCORE) {
@@ -304,6 +271,41 @@ class PlayState extends FlxState {
 		hud.draw();
 	}
 
+	public function manageFruit(elapsed:Float):Void {
+		if (dotCount ==  70) {
+			// Create fruit.
+			fruit.unhide();
+			add(fruit);
+			fruit.x = 216;
+			fruit.y = 320;
+
+			switch (stage) {
+				case 1: fruit.setFruit(Constants.FruitOption.CHERRY);
+				case 2: fruit.setFruit(Constants.FruitOption.STRAWBERRY);
+				case 3: fruit.setFruit(Constants.FruitOption.ORANGE);
+				case 4: fruit.setFruit(Constants.FruitOption.APPLE);
+				case 5: fruit.setFruit(Constants.FruitOption.MELON);
+				case 6: fruit.setFruit(Constants.FruitOption.GALAXIAN);
+				case 7: fruit.setFruit(Constants.FruitOption.BELL);
+				default: fruit.setFruit(Constants.FruitOption.KEY);
+			}
+
+		} else if (dotCount == 170 || fruitTime >= 1000) {
+			// Remove fruit.
+			resetFruit();
+		}
+
+		// Fruit timer.
+		if (fruit.alive) {
+			fruitTime += Std.int(elapsed * 60);
+		}
+
+		// Check if player is touching fruit.
+		if(FlxG.overlap(player, fruit)) {
+			playerTouchFruit();
+		}
+	}
+
 	public function restartGame():Void {
 		stage = 0;
 		lives = Constants.LIVES;
@@ -319,6 +321,17 @@ class PlayState extends FlxState {
 
 		//Play chime for stage 1.
 		chime.play(false);
+
+		/*
+		// Temporary fix for bug with dot count. Offset dot count to accommodate for miscalculation.
+		// I think this is fixed but I need to test the game more to know for sure.
+		if ((dots.length + bigDots.length) > dotGoal) {
+			dotCount = dots.length - dotGoal;
+		}
+
+		trace("dotCount: " + dotCount);
+		trace("dotGoal: " + dotGoal);
+		*/
 	}
 
 	private function freezeGame(duration:Int):Void {
@@ -396,11 +409,14 @@ class PlayState extends FlxState {
 	private function resetDots() {
 		// Clear existing dots.
 		dots.clear();
+		bigDots.clear();
 		dotCount = 0;
 		dotGoal = 0;
 
 		// Call placeEntities to re-add dots.
 		map.loadEntities(placeEntities, "entities");
+
+		dotGoal = dots.length + bigDots.length;
 	}
 
 	private function manageGhost(ghost:Ghost, elapsed:Float):Void {
@@ -859,10 +875,10 @@ class PlayState extends FlxState {
 			intersections.add(new Intersection(entity.x, entity.y));
 		} else if (entity.name == "dot") {
 			dots.add(new Dot(entity.x, entity.y));
-			dotGoal++;
+			//dotGoal++;
 		} else if (entity.name == "bigDot") {
 			bigDots.add(new BigDot(entity.x, entity.y));
-			dotGoal++;
+			//dotGoal++;
 		} else if (entity.name == "blinky" && stage == 1) {
 			blinky.setPosition(entity.x, entity.y);
 		} else if (entity.name == "pinky" && stage == 1) {

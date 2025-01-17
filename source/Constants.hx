@@ -30,6 +30,7 @@ enum FruitOption {
 class Constants {
 	public static final PLAYER_SPEED:Int = 4;
 	public static final PLAYER_SIZE:Int = 16;
+	public static final INTERSECTION_SIZE:Int = 16;
 	public static final GHOST_SPEED:Int = 4;
 	public static final GHOST_SIZE:Int = 16;
 	public static final DOT_VALUE:Int = 10;

@@ -8,8 +8,8 @@ class Intersection extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0) {
 		super(x, y);
 
-		this.setSize(16, 16);
-		this.makeGraphic(16, 16, FlxColor.PINK);
+		this.setSize(Constants.INTERSECTION_SIZE, Constants.INTERSECTION_SIZE);
+		this.makeGraphic(Constants.INTERSECTION_SIZE, Constants.INTERSECTION_SIZE, FlxColor.PINK);
 		this.alpha = 0;
 	}
 
@@ -21,8 +21,8 @@ class Intersection extends FlxSprite {
 		var centerY = this.y + this.height / 2;
 
 		// Convert pixel coordinate to tile coordinate
-		var tileX = Std.int(centerX / 16);
-		var tileY = Std.int(centerY / 16);
+		var tileX = Std.int(centerX / Constants.INTERSECTION_SIZE);
+		var tileY = Std.int(centerY / Constants.INTERSECTION_SIZE);
 
 		// Check for up.
 		if (walls.getTileIndex(tileX, tileY - 1) == 0) {
