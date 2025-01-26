@@ -17,10 +17,12 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 		- Create or find better tiles for tilemap
 		- Add graphics to main menu
 		- Make hud look nicer
+		- Make game over screen look nicer
 	- Game progression logic (what changes between stages) should be more thought out.
 	- Bugs
 		- Find and fix any bugs
 		- Bug with ghosts not moving or not being correctly placed inside pen when in pen mode
+		- Fruit will sometimes fail to disappear after begin ate
 	- Sound
 		- Current sounds are all placeholders
 	- Mobile device friendly touch controls / input
