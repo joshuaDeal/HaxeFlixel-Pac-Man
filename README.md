@@ -1,6 +1,8 @@
 # HaxeFlixel-Pac-Man
 Pacman remake in HaxeFlixel
 
+<img src="./img/example001.png" width="50%">
+
 ## Unfinished
 I haven't quite finished this game, but the main game loop and logic is all there. It's totally playable and still pretty fun.
 
