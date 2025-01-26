@@ -8,7 +8,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 
 ### TODO
 	- Graphics
-		- Upscale everything (Square sprite should be something like 128x128 or 64x64)
+		- Upscale everything (Square sprites should be something like 128x128 or 64x64)
 		- Create sprite sheets / Animations
 			- Player / Pacman
 			- Ghosts
@@ -29,7 +29,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 	- Main Menu
 		- Maybe add a settings screen where the user can toggle things relating to graphics and sound effects. Things that turning on/off could improve performance on weaker devices
 	- Polish
-		- Trail effect when ghost are in flee mode
+		- Trail effect when ghosts are in flee mode
 		- Animation for characters switching direction
 		- Animation for when player is ate by a ghost
 		- Transition effects between stages
