@@ -6,7 +6,7 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
 class Fruit extends FlxSprite {
-	private static final SIZE = 16;
+	private static final SIZE = 64;
 	public var value = 0;
 
 	public function new(x:Float = 0, y:Float = 0):Void {

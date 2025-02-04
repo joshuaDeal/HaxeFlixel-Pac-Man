@@ -6,7 +6,7 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
 class Dot extends FlxSprite {
-	private static final SIZE = 4;
+	private static final SIZE = 16;
 
 	public function new(x:Float = 0, y:Float = 0):Void {
 		super(x,y);
@@ -17,7 +17,7 @@ class Dot extends FlxSprite {
 
 	override public function kill():Void {
 		alive = false;
-		FlxTween.tween(this, {alpha: 0, y: y -16}, 0.33, {ease: FlxEase.circOut, onComplete: finishKill});
+		FlxTween.tween(this, {alpha: 0, y: y -64}, 0.33, {ease: FlxEase.circOut, onComplete: finishKill});
 	}
 
 	private function finishKill(_):Void {

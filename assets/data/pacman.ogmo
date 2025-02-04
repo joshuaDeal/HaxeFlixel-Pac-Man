@@ -1,15 +1,15 @@
 {
-  "name": "Pac-Man",
+  "name": "pacman",
   "ogmoVersion": "3.4.0",
   "levelPaths": ["."],
   "backgroundColor": "#282c34ff",
   "gridColor": "#3c4049cc",
   "anglesRadians": false,
   "directoryDepth": 5,
-  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "layerGridDefaultSize": {"x": 64, "y": 64},
   "levelDefaultSize": {"x": 320, "y": 240},
-  "levelMinSize": {"x": 448, "y": 576},
-  "levelMaxSize": {"x": 448, "y": 576},
+  "levelMinSize": {"x": 1792, "y": 2304},
+  "levelMaxSize": {"x": 1792, "y": 2304},
   "levelValues": [],
   "defaultExportMode": ".json",
   "compactExport": false,
@@ -18,29 +18,29 @@
   "entityTags": [],
   "layers": [
     {
-      "definition": "entity",
-      "name": "entities",
-      "gridSize": {"x": 2, "y": 2},
-      "exportID": "45146845",
-      "requiredTags": [],
-      "excludedTags": []
-    },
-    {
       "definition": "tile",
       "name": "walls",
-      "gridSize": {"x": 16, "y": 16},
-      "exportID": "45149971",
+      "gridSize": {"x": 64, "y": 64},
+      "exportID": "61662234",
       "exportMode": 0,
       "arrayMode": 0,
-      "defaultTileset": ""
+      "defaultTileset": "tiles"
+    },
+    {
+      "definition": "entity",
+      "name": "entities",
+      "gridSize": {"x": 4, "y": 4},
+      "exportID": "61811085",
+      "requiredTags": [],
+      "excludedTags": []
     }
   ],
   "entities": [
     {
-      "exportID": "45152818",
+      "exportID": "61820940",
       "name": "player",
       "limit": 1,
-      "size": {"x": 16, "y": 16},
+      "size": {"x": 64, "y": 64},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -57,7 +57,7 @@
       "color": "#faff00ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 64, "y": 64},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -73,9 +73,45 @@
       "values": []
     },
     {
-      "exportID": "53333533",
+      "exportID": "61826406",
       "name": "intersection",
       "limit": -1,
+      "size": {"x": 64, "y": 64},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#04ff00ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 64, "y": 64},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    },
+    {
+      "exportID": "61839145",
+      "name": "dot",
+      "limit": -1,
       "size": {"x": 16, "y": 16},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
@@ -90,7 +126,7 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#56ff00ff",
+      "color": "#0024ffff",
       "tileX": false,
       "tileY": false,
       "tileSize": {"x": 16, "y": 16},
@@ -109,46 +145,10 @@
       "values": []
     },
     {
-      "exportID": "61522773",
-      "name": "dot",
-      "limit": -1,
-      "size": {"x": 4, "y": 4},
-      "origin": {"x": 0, "y": 0},
-      "originAnchored": true,
-      "shape": {
-        "label": "Rectangle",
-        "points": [
-          {"x": -1, "y": -1},
-          {"x": 1, "y": -1},
-          {"x": -1, "y": 1},
-          {"x": 1, "y": -1},
-          {"x": -1, "y": 1},
-          {"x": 1, "y": 1}
-        ]
-      },
-      "color": "#0400ffff",
-      "tileX": false,
-      "tileY": false,
-      "tileSize": {"x": 4, "y": 4},
-      "resizeableX": false,
-      "resizeableY": false,
-      "rotatable": false,
-      "rotationDegrees": 360,
-      "canFlipX": false,
-      "canFlipY": false,
-      "canSetColor": false,
-      "hasNodes": false,
-      "nodeLimit": 0,
-      "nodeDisplay": 0,
-      "nodeGhost": true,
-      "tags": [],
-      "values": []
-    },
-    {
-      "exportID": "61643772",
+      "exportID": "61831675",
       "name": "bigDot",
       "limit": -1,
-      "size": {"x": 8, "y": 8},
+      "size": {"x": 32, "y": 32},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -162,10 +162,10 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#d100ffff",
+      "color": "#df00ffff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 8, "y": 8},
+      "tileSize": {"x": 32, "y": 32},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -181,10 +181,10 @@
       "values": []
     },
     {
-      "exportID": "62523197",
+      "exportID": "61831710",
       "name": "blinky",
       "limit": 1,
-      "size": {"x": 16, "y": 16},
+      "size": {"x": 64, "y": 64},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -201,7 +201,7 @@
       "color": "#ff0000ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 64, "y": 64},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -217,10 +217,10 @@
       "values": []
     },
     {
-      "exportID": "98228244",
+      "exportID": "61847617",
       "name": "pinky",
       "limit": 1,
-      "size": {"x": 16, "y": 16},
+      "size": {"x": 64, "y": 64},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -234,10 +234,10 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#fed6ffff",
+      "color": "#fac0e8ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 64, "y": 64},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -253,10 +253,10 @@
       "values": []
     },
     {
-      "exportID": "98220090",
+      "exportID": "61847118",
       "name": "inky",
       "limit": 1,
-      "size": {"x": 16, "y": 16},
+      "size": {"x": 64, "y": 64},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -270,10 +270,10 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#00f1ffff",
+      "color": "#00ffe3ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 64, "y": 64},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -289,10 +289,10 @@
       "values": []
     },
     {
-      "exportID": "98236206",
+      "exportID": "61844040",
       "name": "clyde",
       "limit": 1,
-      "size": {"x": 16, "y": 16},
+      "size": {"x": 64, "y": 64},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
       "shape": {
@@ -306,10 +306,10 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#ff9600ff",
+      "color": "#ffb100ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 64, "y": 64},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -326,6 +326,6 @@
     }
   ],
   "tilesets": [
-    {"label": "tiles", "path": "../images/tiles.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAQCAYAAABQrvyxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODRBQjNDODZENDhCMTFFMzk5N0RDMzAxQTc5NEM5RkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODRBQjNDODdENDhCMTFFMzk5N0RDMzAxQTc5NEM5RkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4NEFCM0M4NEQ0OEIxMUUzOTk3REMzMDFBNzk0QzlGQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4NEFCM0M4NUQ0OEIxMUUzOTk3REMzMDFBNzk0QzlGQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrOLMN8AAACUSURBVHja7JWhDoAgEEBPRrERbVYCX+If8Z8Eqo2IyYi7wOYYTncYuI3XD94bDKaUErSwWZtWY0izu3NAnc3zEhpBAVyIQvAeWuKPEEAAQ7I8IjjLswso5RHZq2iNUp7lFRoBI2AEQN+vEL5A+EM/MSvV7wm8ySNnjH0GfJGvRQhu8mWE/GPz2g/5hUVrkvw94hJgALO2Vr1s43dIAAAAAElFTkSuQmCC", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+    {"label": "tiles", "path": "../images/tiles.png", "image": "data:image/png;base64,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", "tileWidth": 64, "tileHeight": 64, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
   ]
 }

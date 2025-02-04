@@ -13,7 +13,7 @@ class MenuState extends FlxState {
 
 		// Create text.
 		startText = new FlxText(0, FlxG.height / 2 - 50 , FlxG.width, "Press enter key.");
-		startText.setFormat(null, 32, FlxColor.WHITE, "center");
+		startText.setFormat(null, 64, FlxColor.WHITE, "center");
 		add(startText);
 	}
 

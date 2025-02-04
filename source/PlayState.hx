@@ -238,10 +238,10 @@ class PlayState extends FlxState {
 			}
 
 			// Teleport player if player exits stage left or right.
-			if (player.x <= -16) {
-				player.x = 448;
-			} else if (player.x >= 448) {
-				player.x = -16;
+			if (player.x <= -64) {
+				player.x = 1792;
+			} else if (player.x >= 1792) {
+				player.x = -64;
 			}
 
 			// Basic win condition.
@@ -276,8 +276,8 @@ class PlayState extends FlxState {
 			// Create fruit.
 			fruit.unhide();
 			add(fruit);
-			fruit.x = 216;
-			fruit.y = 320;
+			fruit.x = 868;
+			fruit.y = 1280;
 
 			switch (stage) {
 				case 1: fruit.setFruit(Constants.FruitOption.CHERRY);
@@ -424,41 +424,35 @@ class PlayState extends FlxState {
 		if (ghost.mode == Constants.GhostMode.PEN || ghost.mode == Constants.GhostMode.FLEE) {
 			ghost.moveGhost();
 		} else if (ghost.mode == Constants.GhostMode.CHASE || ghost.mode == Constants.GhostMode.SCATTER) {
-			//ghostFollowPath(ghost, Std.int(player.x), Std.int(player.y), elapsed);
 			ghost.moveGhost();
 		} else if (ghost.mode == Constants.GhostMode.EXIT_PEN) {
-			ghostFollowPath(ghost, 216, 224, elapsed);
-			//ghostFollowPath(ghost, 224, 224, elapsed);
+			ghostFollowPath(ghost, 864, 896, elapsed);
 		} else if (ghost.mode == Constants.GhostMode.ATE) {
 			if (ghost == blinky)
-				ghostFollowPath(ghost, 216, 224, elapsed);
-				//ghostFollowPath(ghost, 224, 224, elapsed);
+				ghostFollowPath(ghost, 864, 896, elapsed);
 			else if (ghost == pinky)
-				ghostFollowPath(ghost, 184, 256, elapsed);
-				//ghostFollowPath(ghost, 192, 256, elapsed);
+				ghostFollowPath(ghost, 736, 1024, elapsed);
 			else if (ghost == inky)
-				ghostFollowPath(ghost, 216, 288, elapsed);
-				//ghostFollowPath(ghost, 224, 288, elapsed);
+				ghostFollowPath(ghost, 864, 1156, elapsed);
 			else if (ghost == clyde)
-				ghostFollowPath(ghost, 248, 256, elapsed);
-				//ghostFollowPath(ghost, 256, 256, elapsed);
+				ghostFollowPath(ghost, 992, 1024, elapsed);
 		}
 
 		// Allow collisions between ghost and walls.
 		FlxG.collide(ghost, walls);
 
 		// Slow ghosts down if they are in exit tunnle.
-		if ((ghost.x < 96 && ghost.y == 272) || (ghost.x > 336 && ghost.y == 272)) {
+		if ((ghost.x < 384 && ghost.y == 1088) || (ghost.x > 1344 && ghost.y == 1088)) {
 			ghost.speed = Std.int(ghostSpeed / 2);
 		} else if (ghost.mode != Constants.GhostMode.FLEE && ghost.speed != ghostSpeed) {
 			ghost.speed = ghostSpeed;
 		}
 
 		// Teleport ghost if it exits stage left or right.
-		if (ghost.x <= -18) {
-			ghost.x = 450;
-		} else if (ghost.x >= 450) {
-			ghost.x = -18;
+		if (ghost.x <= -64) {
+			ghost.x = 1792;
+		} else if (ghost.x >= 1792) {
+			ghost.x = -64;
 		}
 
 		// Check if ghost is in intersection.
@@ -469,24 +463,24 @@ class PlayState extends FlxState {
 					if (ghost == blinky) {
 						ghost.newDirection = ghost.findDirection(Std.int(player.x), Std.int(player.y), intersection.getPossibleDirections(walls));
 					} else if (ghost == pinky) {
-						// Target spot 64 pixels in front of player.
+						// Target spot 256 pixels in front of player.
 						var targetX:Int;
 						var targetY:Int;
 
 						// Determine pinky's target based on player's direction.
 						switch (player.direction) {
 							case Constants.Direction.LEFT:
-								targetX = Std.int(player.x) - 64;
+								targetX = Std.int(player.x) - 256;
 								targetY = Std.int(player.y);
 							case Constants.Direction.RIGHT:
-								targetX = Std.int(player.x) + 64;
+								targetX = Std.int(player.x) + 256;
 								targetY = Std.int(player.y);
 							case Constants.Direction.UP:
 								targetX = Std.int(player.x);
-								targetY = Std.int(player.y) - 64;
+								targetY = Std.int(player.y) - 256;
 							case Constants.Direction.DOWN:
 								targetX = Std.int(player.x);
-								targetY = Std.int(player.y) + 64;
+								targetY = Std.int(player.y) + 256;
 						}
 
 						ghost.newDirection = ghost.findDirection(targetX, targetY, intersection.getPossibleDirections(walls));
@@ -496,17 +490,17 @@ class PlayState extends FlxState {
 
 						switch (player.direction) {
 							case Constants.Direction.LEFT:
-								targetX = Std.int(player.x) - 32;
+								targetX = Std.int(player.x) - 128;
 								targetY = Std.int(player.y);
 							case Constants.Direction.RIGHT:
-								targetX = Std.int(player.x) + 32;
+								targetX = Std.int(player.x) + 128;
 								targetY = Std.int(player.y);
 							case Constants.Direction.UP:
 								targetX = Std.int(player.x);
-								targetY = Std.int(player.y) - 32;
+								targetY = Std.int(player.y) - 128;
 							case Constants.Direction.DOWN:
 								targetX = Std.int(player.x);
-								targetY = Std.int(player.y) + 32;
+								targetY = Std.int(player.y) + 128;
 						}
 
 						// Calculate vector from blinky to new target position.
@@ -525,7 +519,7 @@ class PlayState extends FlxState {
 						// Find distance from player (Euclidean distance fromula).
 						var distanceToPlayer: Float = Math.sqrt(Math.pow(Std.int(player.x) - ghost.x, 2) + Math.pow(Std.int(player.y) - ghost.y, 2));
 
-						if (distanceToPlayer > 128) {
+						if (distanceToPlayer > 512) {
 							targetX = Std.int(player.x);
 							targetY = Std.int(player.y);
 						} else {
@@ -537,20 +531,20 @@ class PlayState extends FlxState {
 					}
 				} else if (ghost.mode == Constants.GhostMode.SCATTER) {
 					if (ghost == blinky) {
-						var targetX = 432;
-						var targetY = 32;
+						var targetX = 1728;
+						var targetY = 128;
 						ghost.newDirection = ghost.findDirection(targetX, targetY, intersection.getPossibleDirections(walls));
 					} else if (ghost == pinky) {
 						var targetX = 0;
-						var targetY = 32;
+						var targetY = 128;
 						ghost.newDirection = ghost.findDirection(targetX, targetY, intersection.getPossibleDirections(walls));
 					} else if (ghost == inky) {
-						var targetX = 432;
-						var targetY = 560;
+						var targetX = 1728;
+						var targetY = 2240;
 						ghost.newDirection = ghost.findDirection(targetX, targetY, intersection.getPossibleDirections(walls));
 					} else if (ghost == clyde) {
 						var targetX = 0;
-						var targetY = 560;
+						var targetY = 2240;
 						ghost.newDirection = ghost.findDirection(targetX, targetY, intersection.getPossibleDirections(walls));
 					}
 				} else {
@@ -603,10 +597,10 @@ class PlayState extends FlxState {
 
 		// Logic for ghost pen mode.
 		if (ghost.mode == Constants.GhostMode.PEN) {
-			if (ghost.y == 256) {
+			if (ghost.y <= 1014) {
 				ghost.newDirection = Constants.Direction.DOWN;
 				ghost.changeDirection();
-			} else if (ghost.y == 288) {
+			} else if (ghost.y >= 1146) {
 				ghost.newDirection = Constants.Direction.UP;
 				ghost.changeDirection();
 			}
@@ -670,28 +664,20 @@ class PlayState extends FlxState {
 
 		// Move ghost to pen.
 		if (ghost == blinky) {
-			ghost.x = 216;
-			ghost.y = 224;
+			ghost.x = 864;
+			ghost.y = 896;
 			ghost.newDirection = Constants.Direction.LEFT;
 			ghost.changeDirection();
 			ghost.isVertical = false;
-			//ghost.x = 224;
-			//ghost.y = 224;
 		} else if (ghost == pinky) {
-			ghost.x = 184;
-			ghost.y = 256;
-			//ghost.x = 192;
-			//ghost.y = 256;
+			ghost.x = 736;
+			ghost.y = 1024;
 		} else if (ghost == inky) {
-			ghost.x = 216;
-			ghost.y = 288;
-			//ghost.x = 224;
-			//ghost.y = 288;
+			ghost.x = 864;
+			ghost.y = 1156;
 		} else if (ghost == clyde) {
-			ghost.x = 248;
-			ghost.y = 256;
-			//ghost.x = 256;
-			//ghost.y = 256;
+			ghost.x = 992;
+			ghost.y = 1024;
 		}
 
 		colorGhost(ghost);
@@ -781,8 +767,8 @@ class PlayState extends FlxState {
 	}
 
 	private function resetPlayer() {
-		player.x = 216;
-		player.y = 416;
+		player.x = 864;
+		player.y = 1664;
 		player.newDirection = Constants.Direction.LEFT;
 		player.changeDirection();
 		player.isVertical = false;
