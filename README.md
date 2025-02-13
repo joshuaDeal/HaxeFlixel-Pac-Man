@@ -16,7 +16,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 			<li><s>Upscale everything (Square sprites should be something like 128x128 or 64x64)</s></li>
 			<li>Create sprite sheets / Animations</li>
 				<ul>
-					<li>Player / Pacman</li>
+					<li><s>Player / Pacman</s></li>
 					<li>Ghosts</li>
 					<li>Dots</li>
 					<li>Fruits</li>
