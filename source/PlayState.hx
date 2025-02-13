@@ -343,17 +343,6 @@ class PlayState extends FlxState {
 
 		//Play chime for stage 1.
 		chime.play(false);
-
-		/*
-		// Temporary fix for bug with dot count. Offset dot count to accommodate for miscalculation.
-		// I think this is fixed but I need to test the game more to know for sure.
-		if ((dots.length + bigDots.length) > dotGoal) {
-			dotCount = dots.length - dotGoal;
-		}
-
-		trace("dotCount: " + dotCount);
-		trace("dotGoal: " + dotGoal);
-		*/
 	}
 
 	private function freezeGame(duration:Int):Void {
