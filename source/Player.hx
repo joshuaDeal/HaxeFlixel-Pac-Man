@@ -7,6 +7,8 @@ class Player extends FlxSprite {
 	public var direction:Constants.Direction = Constants.Direction.LEFT;
 	public var newDirection:Constants.Direction = Constants.Direction.LEFT;
 	public var isVertical:Bool = false;
+	public var lastX:Float;
+	public var lastY:Float;
 
 	public function new (x:Float = 0, y:Float = 0) {
 		super(x, y);

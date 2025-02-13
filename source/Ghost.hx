@@ -11,13 +11,38 @@ class Ghost extends FlxSprite {
 	public var mode:Constants.GhostMode = Constants.GhostMode.CHASE;
 	public var speed:Int = Constants.GHOST_SPEED;
 	public var pathPoints:Array<FlxPoint> = null;
+	public var lastX:Float;
+	public var lastY:Float;
 
 	public function new (x:Float = 0, y:Float = 0) {
 		super(x, y);
 
 		//Set dimensions of Ghost.
 		this.setSize(Constants.GHOST_SIZE, Constants.GHOST_SIZE);
-		this.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.RED);
+		//this.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.RED);
+		this.loadGraphic("assets/images/ghost.png", true, Constants.GHOST_SIZE, Constants.GHOST_SIZE);
+
+		// Create animations.
+		animation.add("blinky_left", [0, 1]);
+		animation.add("blinky_right", [2, 3]);
+		animation.add("blinky_up", [4, 5]);
+		animation.add("blinky_down", [6, 7]);
+		animation.add("pinky_left", [8, 9]);
+		animation.add("pinky_right", [10, 11]);
+		animation.add("pinky_up", [12, 13]);
+		animation.add("pinky_down", [14, 15]);
+		animation.add("inky_left", [16, 17]);
+		animation.add("inky_right", [18, 19]);
+		animation.add("inky_up", [20, 21]);
+		animation.add("inky_down", [22, 23]);
+		animation.add("clyde_left", [24, 25]);
+		animation.add("clyde_right", [26, 27]);
+		animation.add("clyde_up", [28, 29]);
+		animation.add("clyde_down", [30, 31]);
+		animation.add("flee_left", [32, 33]);
+		animation.add("flee_right", [34, 35]);
+		animation.add("flee_up", [36, 37]);
+		animation.add("flee_down", [38, 39]);
 	}
 
 	public function moveGhost():Void {

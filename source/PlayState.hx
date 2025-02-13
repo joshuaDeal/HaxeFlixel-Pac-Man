@@ -56,8 +56,6 @@ class PlayState extends FlxState {
 	private var ghostSpeed:Int = Constants.GHOST_SPEED;
 	private var extraLifeScore:Int = 0;
 	private var fruit:Fruit;
-	private var lastX:Float;
-	private var lastY:Float;
 
 	override public function create() {
 		super.create();
@@ -206,7 +204,7 @@ class PlayState extends FlxState {
 			FlxG.overlap(player, bigDots, playerTouchBigDot);
 
 			// Animate player.
-			if (lastX != player.x || lastY != player.y) {
+			if (player.lastX != player.x || player.lastY != player.y) {
 				switch(player.direction) {
 					case Constants.Direction.LEFT:
 						player.animation.play("left");
@@ -221,8 +219,8 @@ class PlayState extends FlxState {
 				player.animation.pause();
 			}
 
-			lastX = player.x;
-			lastY = player.y;
+			player.lastX = player.x;
+			player.lastY = player.y;
 
 			// Manage fruit.
 			manageFruit(elapsed);
@@ -461,6 +459,70 @@ class PlayState extends FlxState {
 			else if (ghost == clyde)
 				ghostFollowPath(ghost, 992, 1024, elapsed);
 		}
+
+		// Animate ghost.
+		if (ghost.lastX != ghost.x || ghost.lastY != ghost.y) {
+			if (ghost.mode != Constants.GhostMode.FLEE && ghost.mode != Constants.GhostMode.ATE) {
+				switch (ghost.direction) {
+					case Constants.Direction.LEFT:
+						if (ghost == blinky) {
+							ghost.animation.play("blinky_left");
+						} else if (ghost == pinky) {
+							ghost.animation.play("pinky_left");
+						} else if (ghost == inky) {
+							ghost.animation.play("inky_left");
+						} else if (ghost == clyde) {
+							ghost.animation.play("clyde_left");
+						}
+					case Constants.Direction.RIGHT:
+						if (ghost == blinky) {
+							ghost.animation.play("blinky_right");
+						} else if (ghost == pinky) {
+							ghost.animation.play("pinky_right");
+						} else if (ghost == inky) {
+							ghost.animation.play("inky_right");
+						} else if (ghost == clyde) {
+							ghost.animation.play("clyde_right");
+						}
+					case Constants.Direction.UP:
+						if (ghost == blinky) {
+							ghost.animation.play("blinky_up");
+						} else if (ghost == pinky) {
+							ghost.animation.play("pinky_up");
+						} else if (ghost == inky) {
+							ghost.animation.play("inky_up");
+						} else if (ghost == clyde) {
+							ghost.animation.play("clyde_up");
+						}
+					case Constants.Direction.DOWN:
+						if (ghost == blinky) {
+							ghost.animation.play("blinky_down");
+						} else if (ghost == pinky) {
+							ghost.animation.play("pinky_down");
+						} else if (ghost == inky) {
+							ghost.animation.play("inky_down");
+						} else if (ghost == clyde) {
+							ghost.animation.play("clyde_down");
+						}
+				}
+			} else if (ghost.mode == Constants.GhostMode.FLEE) {
+				switch (ghost.direction) {
+					case Constants.Direction.LEFT:
+						ghost.animation.play("flee_left");
+					case Constants.Direction.RIGHT:
+						ghost.animation.play("flee_right");
+					case Constants.Direction.UP:
+						ghost.animation.play("flee_up");
+					case Constants.Direction.DOWN:
+						ghost.animation.play("flee_down");
+				}
+			}
+		} else {
+			ghost.animation.pause();
+		}
+
+		ghost.lastX = ghost.x;
+		ghost.lastY = ghost.y;
 
 		// Allow collisions between ghost and walls.
 		FlxG.collide(ghost, walls);
@@ -704,7 +766,7 @@ class PlayState extends FlxState {
 			ghost.y = 1024;
 		}
 
-		colorGhost(ghost);
+		//colorGhost(ghost);
 
 		// Set ghost to pen mode.
 		ghost.mode = Constants.GhostMode.PEN;
@@ -817,7 +879,8 @@ class PlayState extends FlxState {
 			}
 
 			// Change Graphic.
-			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.BLUE);
+			//ghost.loadGraphic("assets/images/flee.png", true, Constants.GHOST_SIZE, Constants.GHOST_SIZE);
+			//ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.BLUE);
 
 			// Change Speed.
 			if (ghost.speed == ghostSpeed) {
@@ -831,7 +894,7 @@ class PlayState extends FlxState {
 			ghost.mode = Constants.GhostMode.SCATTER;
 			//ghost.mode = Constants.GhostMode.CHASE;
 
-			colorGhost(ghost);
+			//colorGhost(ghost);
 
 			ghost.speed = ghostSpeed;
 
@@ -842,6 +905,7 @@ class PlayState extends FlxState {
 	private function colorGhost(ghost:Ghost):Void {
 		if (ghost == blinky)
 			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.RED);
+			//ghost.loadGraphic("assets/images/blinky.png", true, Constants.GHOST_SIZE, Constants.GHOST_SIZE);
 		else if (ghost == pinky)
 			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.PINK);
 		else if (ghost == inky)
@@ -853,7 +917,7 @@ class PlayState extends FlxState {
 	private function ghostAte(ghost:Ghost):Void {
 		ghostAteSound.play(false);
 		ghost.mode = Constants.GhostMode.ATE;
-		ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.GREEN);
+		//ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.GREEN);
 		freezeGame(500);
 
 		if (ghostsEatenInFlee < 4) {
