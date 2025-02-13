@@ -43,6 +43,10 @@ class Ghost extends FlxSprite {
 		animation.add("flee_right", [34, 35]);
 		animation.add("flee_up", [36, 37]);
 		animation.add("flee_down", [38, 39]);
+		animation.add("ate_left", [40, 41]);
+		animation.add("ate_right", [42, 43]);
+		animation.add("ate_up", [44, 45]);
+		animation.add("ate_down", [46, 47]);
 	}
 
 	public function moveGhost():Void {

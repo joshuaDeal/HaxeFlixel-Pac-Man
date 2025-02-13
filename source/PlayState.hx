@@ -505,6 +505,17 @@ class PlayState extends FlxState {
 					case Constants.Direction.DOWN:
 						ghost.animation.play("flee_down");
 				}
+			} else if (ghost.mode == Constants.GhostMode.ATE) {
+				switch (ghost.direction) {
+					case Constants.Direction.LEFT:
+						ghost.animation.play("ate_left");
+					case Constants.Direction.RIGHT:
+						ghost.animation.play("ate_right");
+					case Constants.Direction.UP:
+						ghost.animation.play("ate_up");
+					case Constants.Direction.DOWN:
+						ghost.animation.play("ate_down");
+				}
 			}
 		} else {
 			ghost.animation.pause();
