@@ -17,7 +17,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 			<li>Create sprite sheets / Animations</li>
 				<ul>
 					<li><s>Player / Pacman</s></li>
-					<li>Ghosts</li>
+					<li><s>Ghosts<s></li>
 					<li>Dots</li>
 					<li>Fruits</li>
 				</ul>
