@@ -11,6 +11,9 @@ class MenuState extends FlxState {
 	override public function create() {
 		super.create();
 
+		// Show mouse.
+		FlxG.mouse.visible = true;
+
 		// Create text.
 		startText = new FlxText(0, FlxG.height / 2 - 50 , FlxG.width, "Press enter key.");
 		startText.setFormat(null, 64, FlxColor.WHITE, "center");

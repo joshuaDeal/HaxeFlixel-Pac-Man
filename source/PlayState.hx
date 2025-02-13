@@ -63,6 +63,9 @@ class PlayState extends FlxState {
 		// Set background color.
 		bgColor = FlxColor.fromRGB(25, 25, 25);
 
+		// Hide mouse.
+		FlxG.mouse.visible = false;
+
 		// Create and manage tilemap.
 		map = new FlxOgmo3Loader("assets/data/pacman.ogmo", "assets/data/maze.json");
 		walls = map.loadTilemap("assets/images/tiles.png", "walls");
