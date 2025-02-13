@@ -18,7 +18,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 				<ul>
 					<li><s>Player / Pacman</s></li>
 					<li><s>Ghosts</s></li>
-					<li>Dots</li>
+					<li><s>Dots</s></li>
 					<li>Fruits</li>
 				</ul>
 			<li>Create or find better tiles for tilemap</li>
