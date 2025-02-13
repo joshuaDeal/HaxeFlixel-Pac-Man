@@ -62,6 +62,9 @@ class PlayState extends FlxState {
 	override public function create() {
 		super.create();
 
+		// Set background color.
+		bgColor = FlxColor.fromRGB(25, 25, 25);
+
 		// Create and manage tilemap.
 		map = new FlxOgmo3Loader("assets/data/pacman.ogmo", "assets/data/maze.json");
 		walls = map.loadTilemap("assets/images/tiles.png", "walls");
