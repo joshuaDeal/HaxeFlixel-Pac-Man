@@ -13,7 +13,12 @@ class Player extends FlxSprite {
 
 		//Set dimensions of player.
 		this.setSize(Constants.PLAYER_SIZE, Constants.PLAYER_SIZE);
-		this.makeGraphic(Constants.PLAYER_SIZE, Constants.PLAYER_SIZE, FlxColor.YELLOW);
+		this.loadGraphic("assets/images/player.png", true, Constants.PLAYER_SIZE, Constants.PLAYER_SIZE);
+
+		animation.add("left", [0, 1, 2, 1]);
+		animation.add("right", [3, 4, 5, 4]);
+		animation.add("up", [6, 7, 8, 7]);
+		animation.add("down", [9, 10, 11, 10]);
 	}
 
 	public function movePlayer():Void {

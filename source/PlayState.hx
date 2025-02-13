@@ -56,6 +56,8 @@ class PlayState extends FlxState {
 	private var ghostSpeed:Int = Constants.GHOST_SPEED;
 	private var extraLifeScore:Int = 0;
 	private var fruit:Fruit;
+	private var lastX:Float;
+	private var lastY:Float;
 
 	override public function create() {
 		super.create();
@@ -199,6 +201,25 @@ class PlayState extends FlxState {
 			// Check if player is touching a dot.
 			FlxG.overlap(player, dots, playerTouchDot);
 			FlxG.overlap(player, bigDots, playerTouchBigDot);
+
+			// Animate player.
+			if (lastX != player.x || lastY != player.y) {
+				switch(player.direction) {
+					case Constants.Direction.LEFT:
+						player.animation.play("left");
+					case Constants.Direction.RIGHT:
+						player.animation.play("right");
+					case Constants.Direction.UP:
+						player.animation.play("up");
+					case Constants.Direction.DOWN:
+						player.animation.play("down");
+				}
+			} else {
+				player.animation.pause();
+			}
+
+			lastX = player.x;
+			lastY = player.y;
 
 			// Manage fruit.
 			manageFruit(elapsed);
