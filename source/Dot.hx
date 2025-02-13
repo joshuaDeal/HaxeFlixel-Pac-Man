@@ -12,7 +12,7 @@ class Dot extends FlxSprite {
 		super(x,y);
 
 		this.setSize(SIZE, SIZE);
-		this.makeGraphic(SIZE, SIZE, FlxColor.PINK);
+		this.loadGraphic("assets/images/dot.png", true, SIZE, SIZE);
 	}
 
 	override public function kill():Void {

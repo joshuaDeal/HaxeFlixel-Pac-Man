@@ -12,7 +12,7 @@ class BigDot extends FlxSprite {
 		super(x,y);
 
 		this.setSize(SIZE, SIZE);
-		this.makeGraphic(SIZE, SIZE, FlxColor.PINK);
+		this.loadGraphic("assets/images/bigdot.png", true, SIZE, SIZE);
 	}
 
 	override public function kill():Void {
