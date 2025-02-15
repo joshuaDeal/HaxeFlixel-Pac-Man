@@ -14,12 +14,12 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 	<li>Graphics</li>
 		<ul>
 			<li><s>Upscale everything (Square sprites should be something like 128x128 or 64x64)</s></li>
-			<li>Create sprite sheets / Animations</li>
+			<li><s>Create sprite sheets / Animations</s></li>
 				<ul>
 					<li><s>Player / Pacman</s></li>
 					<li><s>Ghosts</s></li>
 					<li><s>Dots</s></li>
-					<li>Fruits</li>
+					<li><s>Fruits</s></li>
 				</ul>
 			<li>Create or find better tiles for tilemap</li>
 			<li>Add graphics to main menu</li>
