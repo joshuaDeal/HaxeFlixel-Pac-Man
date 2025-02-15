@@ -33,28 +33,28 @@ class Fruit extends FlxSprite {
 	public function setFruit(fruit:Constants.FruitOption):Void {
 		switch (fruit) {
 			case Constants.FruitOption.CHERRY:
-				this.makeGraphic(SIZE, SIZE, FlxColor.RED);
+				this.loadGraphic("assets/images/fruit001.png", true, SIZE, SIZE);
 				value = 100;
 			case Constants.FruitOption.STRAWBERRY:
-				this.makeGraphic(SIZE, SIZE, FlxColor.PINK);
+				this.loadGraphic("assets/images/fruit002.png", true, SIZE, SIZE);
 				value = 300;
 			case Constants.FruitOption.ORANGE:
-				this.makeGraphic(SIZE, SIZE, FlxColor.ORANGE);
+				this.loadGraphic("assets/images/fruit003.png", true, SIZE, SIZE);
 				value = 500;
 			case Constants.FruitOption.APPLE:
-				this.makeGraphic(SIZE, SIZE, FlxColor.RED);
+				this.loadGraphic("assets/images/fruit004.png", true, SIZE, SIZE);
 				value = 700;
 			case Constants.FruitOption.MELON:
-				this.makeGraphic(SIZE, SIZE, FlxColor.GREEN);
+				this.loadGraphic("assets/images/fruit005.png", true, SIZE, SIZE);
 				value = 1000;
 			case Constants.FruitOption.GALAXIAN:
-				this.makeGraphic(SIZE, SIZE, FlxColor.YELLOW);
+				this.loadGraphic("assets/images/fruit006.png", true, SIZE, SIZE);
 				value = 2000;
 			case Constants.FruitOption.BELL:
-				this.makeGraphic(SIZE, SIZE, FlxColor.YELLOW);
+				this.loadGraphic("assets/images/fruit007.png", true, SIZE, SIZE);
 				value = 3000;
 			case Constants.FruitOption.KEY:
-				this.makeGraphic(SIZE, SIZE, FlxColor.BLUE);
+				this.loadGraphic("assets/images/fruit008.png", true, SIZE, SIZE);
 				value = 5000;
 		}
 	}
