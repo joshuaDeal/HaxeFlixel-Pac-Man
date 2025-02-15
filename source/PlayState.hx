@@ -175,8 +175,6 @@ class PlayState extends FlxState {
 		if (!isGameFrozen) {
 			super.update(elapsed);
 
-			//trace("Dots remaining: " + dotCount);
-
 			// Player controls.
 			if (FlxG.keys.pressed.W || FlxG.keys.pressed.UP) {
 				player.newDirection = Constants.Direction.UP;
@@ -769,8 +767,6 @@ class PlayState extends FlxState {
 			ghost.y = 1024;
 		}
 
-		//colorGhost(ghost);
-
 		// Set ghost to pen mode.
 		ghost.mode = Constants.GhostMode.PEN;
 	}
@@ -845,7 +841,7 @@ class PlayState extends FlxState {
 			// Reset fruit.
 			resetFruit();
 		} else {
-			//Game Over.
+			// Game Over.
 			gameOver = true;
 			player.x = -1000;
 			player.y = -1000;
@@ -881,10 +877,6 @@ class PlayState extends FlxState {
 				ghost.newDirection = Constants.Direction.UP;
 			}
 
-			// Change Graphic.
-			//ghost.loadGraphic("assets/images/flee.png", true, Constants.GHOST_SIZE, Constants.GHOST_SIZE);
-			//ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.BLUE);
-
 			// Change Speed.
 			if (ghost.speed == ghostSpeed) {
 				ghost.speed = Std.int(ghost.speed / 2);
@@ -897,30 +889,15 @@ class PlayState extends FlxState {
 			ghost.mode = Constants.GhostMode.SCATTER;
 			//ghost.mode = Constants.GhostMode.CHASE;
 
-			//colorGhost(ghost);
-
 			ghost.speed = ghostSpeed;
 
 			ghostFleeTime.set(ghost, 0.0);
 		}
 	}
 
-	private function colorGhost(ghost:Ghost):Void {
-		if (ghost == blinky)
-			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.RED);
-			//ghost.loadGraphic("assets/images/blinky.png", true, Constants.GHOST_SIZE, Constants.GHOST_SIZE);
-		else if (ghost == pinky)
-			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.PINK);
-		else if (ghost == inky)
-			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.CYAN);
-		else if (ghost == clyde)
-			ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.ORANGE);
-	}
-
 	private function ghostAte(ghost:Ghost):Void {
 		ghostAteSound.play(false);
 		ghost.mode = Constants.GhostMode.ATE;
-		//ghost.makeGraphic(Constants.GHOST_SIZE, Constants.GHOST_SIZE, FlxColor.GREEN);
 		freezeGame(500);
 
 		if (ghostsEatenInFlee < 4) {
@@ -952,10 +929,8 @@ class PlayState extends FlxState {
 			intersections.add(new Intersection(entity.x, entity.y));
 		} else if (entity.name == "dot") {
 			dots.add(new Dot(entity.x, entity.y));
-			//dotGoal++;
 		} else if (entity.name == "bigDot") {
 			bigDots.add(new BigDot(entity.x, entity.y));
-			//dotGoal++;
 		} else if (entity.name == "blinky" && stage == 1) {
 			blinky.setPosition(entity.x, entity.y);
 		} else if (entity.name == "pinky" && stage == 1) {
