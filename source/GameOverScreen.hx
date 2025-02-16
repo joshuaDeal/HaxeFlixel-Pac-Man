@@ -23,7 +23,7 @@ class GameOverScreen extends FlxGroup {
 		gameOverText = new FlxText(0, FlxG.height / 2 - 50, FlxG.width, "Game Over");
 		gameOverText.setFormat(null, 64, FlxColor.RED, "center");
 		add(gameOverText);
-		subText = new FlxText(0, FlxG.height / 2 + 30, FlxG.width, "Press enter to restart.\nPress esc to return to main menu.");
+		subText = new FlxText(0, FlxG.height / 2 + 30, FlxG.width, "Press enter or tap to restart.\nPress esc to return to main menu.");
 		subText.setFormat(null, 32, FlxColor.RED, "center");
 		add(subText);
 	}

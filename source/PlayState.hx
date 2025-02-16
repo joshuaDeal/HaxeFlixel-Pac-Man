@@ -293,7 +293,7 @@ class PlayState extends FlxState {
 
 			// Game over
 			if (gameOver) {
-				if (FlxG.keys.pressed.ENTER) {
+				if (FlxG.keys.pressed.ENTER || FlxG.mouse.pressed) {
 					// Restart game.
 					restartGame();
 					gameOverScreen.hide();
@@ -349,6 +349,7 @@ class PlayState extends FlxState {
 	}
 
 	public function restartGame():Void {
+		gameOver = false;
 		stage = 0;
 		lives = Constants.LIVES;
 		score = 0;
