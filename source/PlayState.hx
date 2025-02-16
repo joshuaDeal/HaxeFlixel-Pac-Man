@@ -299,7 +299,7 @@ class PlayState extends FlxState {
 					gameOverScreen.hide();
 				} else if (FlxG.keys.pressed.ESCAPE) {
 					// Switch to menu state.
-					FlxG.switchState(new MenuState());
+					FlxG.switchState(MenuState.new);
 				}
 			}
 

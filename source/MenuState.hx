@@ -29,6 +29,6 @@ class MenuState extends FlxState {
 	}
 
 	public function startGame() {
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(PlayState.new);
 	}
 }
