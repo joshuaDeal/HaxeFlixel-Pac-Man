@@ -56,6 +56,7 @@ class PlayState extends FlxState {
 	private var ghostSpeed:Int = Constants.GHOST_SPEED;
 	private var extraLifeScore:Int = 0;
 	private var fruit:Fruit;
+	private var touchControls:TouchControls;
 
 	override public function create() {
 		super.create();
@@ -65,6 +66,9 @@ class PlayState extends FlxState {
 
 		// Hide mouse.
 		FlxG.mouse.visible = false;
+
+		// Create touch controls.
+		touchControls = new TouchControls();
 
 		// Create and manage tilemap.
 		map = new FlxOgmo3Loader("assets/data/pacman.ogmo", "assets/data/maze.json");
@@ -175,7 +179,7 @@ class PlayState extends FlxState {
 		if (!isGameFrozen) {
 			super.update(elapsed);
 
-			// Player controls.
+			// Player keyboard controls.
 			if (FlxG.keys.pressed.W || FlxG.keys.pressed.UP) {
 				player.newDirection = Constants.Direction.UP;
 			} else if (FlxG.keys.pressed.S || FlxG.keys.pressed.DOWN) {
@@ -184,6 +188,21 @@ class PlayState extends FlxState {
 				player.newDirection = Constants.Direction.LEFT;
 			} else if (FlxG.keys.pressed.D || FlxG.keys.pressed.RIGHT) {
 				player.newDirection = Constants.Direction.RIGHT;
+			}
+
+			// Player touch controls.
+			var swipeDirection:Null<String> = touchControls.update(elapsed);
+			if (swipeDirection != null) {
+				switch (swipeDirection) {
+					case "left":
+						player.newDirection = Constants.Direction.LEFT;
+					case "right":
+						player.newDirection = Constants.Direction.RIGHT;
+					case "up":
+						player.newDirection = Constants.Direction.UP;
+					case "down":
+						player.newDirection = Constants.Direction.DOWN;
+				}
 			}
 
 			//Move player.
