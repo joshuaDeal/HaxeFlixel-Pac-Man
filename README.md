@@ -31,7 +31,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 		<ul>
 			<li>Find and fix any bugs</li>
 			<li>Bug with ghosts not moving or not being correctly placed inside pen when in pen mode</li>
-			<li>Fruit will sometimes fail to disappear after begin ate</li>
+			<li>Fruit will sometimes fail to disappear after being ate</li>
 		</ul>
 	<li>Sound</li>
 		<ul>
