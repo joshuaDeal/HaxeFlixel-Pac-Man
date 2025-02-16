@@ -37,7 +37,7 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 		<ul>
 			<li>Current sounds are all placeholders</li>
 		</ul>
-	<li>Mobile device friendly touch controls / input</li>
+	<li><s>Mobile device friendly touch controls / input</s></li>
 	<li>Main Menu</li>
 		<ul>
 			<li>Maybe add a settings screen where the user can toggle things relating to graphics and sound effects. Things that turning on/off could improve performance on weaker devices</li>
