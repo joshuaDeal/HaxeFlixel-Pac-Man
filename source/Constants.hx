@@ -41,4 +41,6 @@ class Constants {
 	public static final FLEE_TIME:Float = 5.0;
 	public static final GHOST_POINTS:Int = 200;
 	public static final EXTRA_LIFE_SCORE:Int = 10000;
+	public static final BOUNCE_DISPLACEMENT:Int = 8;
+	public static final BOUNCE_OFFSET:Int = 30;
 }
