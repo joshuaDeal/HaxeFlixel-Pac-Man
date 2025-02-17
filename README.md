@@ -49,11 +49,11 @@ I haven't quite finished this game, but the main game loop and logic is all ther
 			<li>Animation for when player is ate by a ghost</li>
 			<li>Transition effects between stages</li>
 			<li>Cutscene / Cartoons that play between some stages</li>
-			<li>Animate dots</li>
+			<li><s>Animate dots</s></li>
 				<ul>
-					<li>I want the dots to bounce up and down slightly</li>
+					<li><s>I want the dots to bounce up and down slightly</s></li>
 						<ul>
-							<li>The timing of this motion should be offset based on the x positioning of the dot in order to create a wave effect. (Hopefully implementing this won't be too resource intensive)</li>
+							<li><s>The timing of this motion should be offset based on the x positioning of the dot in order to create a wave effect. (Hopefully implementing this won't be too resource intensive)</s></li>
 						</ul>
 				</ul>
 		</ul>
