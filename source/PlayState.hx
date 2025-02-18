@@ -738,7 +738,7 @@ class PlayState extends FlxState {
 
 			pathfinder.diagonalPolicy = diagonalPolicy;
 			ghost.pathPoints = pathfinder.findPath(cast walls, FlxPoint.weak(ghost.x + ghost.width / 2, ghost.y + ghost.height / 2), FlxPoint.weak(x + ghost.width / 2, y + ghost.height / 2), simplify);
-			ghost.path.start(ghost.pathPoints, 1000.0, FORWARD, false, true);
+			ghost.path.start(ghost.pathPoints, 500.0, FORWARD, false, true);
 		}
 
 		// Follow path.
